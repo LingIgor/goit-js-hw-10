@@ -10,6 +10,7 @@ inputEl.addEventListener('input', debounce(onInput, 1000));
 
 function onInput(e) {
   const countryName = e.target.value.trim();
+  clearInput();
   fetchCountries(countryName).then(data => {
     console.log(data);
     if (data.length === 1) {
@@ -58,4 +59,9 @@ function buildCountryMurkup(oneCountry) {
   });
 
   divEl.insertAdjacentHTML('beforeend', murkup);
+}
+
+function clearInput() {
+  divEl.innerHTML = '';
+  ulEL.innerHTML = '';
 }
